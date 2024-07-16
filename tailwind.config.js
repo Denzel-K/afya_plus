@@ -7,11 +7,23 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif']
       },
+      colors: {
+        'primary-azure': '#DEEAEB',
+        'border': '#56595A',
+        'input-bg': '#272929',
+        'appt-bg': '#0E0E0E',
+        'eerie-black': '#181717',
+        'blue': '#69B3E4',
+        'admin-blue': '#4047D1',
+        'Pending-clr': '#E9A316',
+        'Approved-clr': '#57E33E',
+        'Cancelled-clr': '#E91F36'
+      }
     },
   },
   plugins: [],
