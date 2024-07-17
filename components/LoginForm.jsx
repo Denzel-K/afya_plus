@@ -15,7 +15,8 @@ export default function LoginForm() {
     const result = await signIn('credentials', {
       redirect: false,
       email,
-      password
+      password,
+      isAdmin: false
     });
 
     if (result.error) {

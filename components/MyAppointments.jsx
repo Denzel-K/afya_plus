@@ -54,28 +54,31 @@ export default function MyAppointments() {
       {appointments.map((appt) => (
         <div key={appt.id} className="bg-appt-bg p-2 mt-4 rounded-md w-full">
           <div className="flex justify-start align-middle">
-            <span className="text-primary-azure font-semibold sm:text-lg opacity-60">{session.user.name}'s</span>
-            <span className="text-primary-azure text-sm opacity-50 ml-2 sm:ml-4 mt-2">appointment with</span>
-            <span className="text-primary-azure font-semibold sm:text-lg opacity-60 ml-2 sm:ml-4">{appt.doctor}</span>
+            <span className="text-primary-azure font-semibold sm:text-lg opacity-50">{session.user.name}'s</span>
+            <span className="text-primary-azure text-sm opacity-40 ml-2 sm:ml-4 mt-2">appointment with</span>
+            <span className="text-primary-azure font-semibold sm:text-lg opacity-50 ml-2 sm:ml-4">{appt.doctor}</span>
           </div>
 
-          <div className="flex justify-start align-middle mt-2">
-            <div className="text-xs font-semibold text-blue opacity-60">Appt Date: <span>{new Date(appt.apptDate).toLocaleString()}</span></div>
-            <div className="text-xs font-semibold text-blue opacity-60 ml-4">Created at: <span>{new Date(appt.createdAt).toLocaleString()}</span></div>
-          </div>
+          <div className="mt-4 text-primary-azure opacity-50 text-sm">{appt.reason}</div>
 
-          <div className="mt-4 text-primary-azure opacity-40 text-sm">{appt.reason}</div>
-          <div className="status flex align-middle justify-end px-4 py-2">
-            <span>
-              <Image 
-                src={`/assets/${appt.apptStatus}.svg`}
-                width={18}
-                height={18}
-                alt={appt.status}
-                className="mr-2 opacity-70"
-              />
-            </span>
-            <span className={`text-${appt.apptStatus}-clr opacity-70 text-sm font-semibold`}>{appt.apptStatus}</span>
+          <div className="status flex align-middle justify-between py-4 border-t-2 border-eerie-black mt-4">
+            <div className="flex justify-start align-middle flex-col sm:flex-row">
+              <div className="text-xs font-semibold text-blue opacity-50">Appt Date: <span>{new Date(appt.apptDate).toLocaleString()}</span>,</div>
+              <div className="text-xs font-semibold text-blue opacity-50 mt-2 sm:ml-2 sm:mt-0">Created at: <span>{new Date(appt.createdAt).toLocaleString()}</span></div>
+            </div>
+
+            <div className="flex align-middle justify-center">
+              <span className="w-6 h-6 flex align-middle justify-center">
+                <Image 
+                  src={`/assets/${appt.apptStatus}.svg`}
+                  width={18}
+                  height={18}
+                  alt={appt.status}
+                  className="mr-2 opacity-70 mb-1"
+                />
+              </span>
+              <span className={`text-status-clr opacity-70 text-sm font-semibold`}>{appt.apptStatus}</span>
+            </div>
           </div>
         </div>
       ))}

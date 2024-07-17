@@ -31,3 +31,36 @@ export const GET = async (req, { params }) => {
     });
   }
 };
+
+
+export const PATCH = async (req, { params }) => {
+  console.log("Starting status update:")
+  const { newStatus} = await req.json();
+
+  try{
+    connectToDB();
+
+    const existingAppt= await Appointment.findById(params.id);
+
+    if(!existingAppt){
+      console.log("Appointment not found!")
+      return new Response("Appointment not found!", {
+        status: 404
+      })
+    }
+
+    existingAppt.apptStatus = newStatus;
+
+    await existingAppt.save();
+
+    return new Response(JSON.stringify(existingAppt), {
+      status: 200
+    });
+  }
+  catch(err){
+    console.log("Failed to update appointment status");
+    return new Response("Failed to update appointment status", {
+      status: 500
+    })
+  }
+}

@@ -21,7 +21,7 @@ export default function Home() {
         
       </div>
 
-      <Link href="/admin" className="flex align-middle w-1/6 self-end opacity-80 hover:opacity-100">
+      <Link href="/admin_login" className="flex align-middle w-1/6 self-end opacity-80 hover:opacity-100">
         <span>
           <Image 
             src="assets/shield-user.svg"

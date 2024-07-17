@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 
 import MyAppointments from '../../components/MyAppointments';
 
-function Patient_Dashboard() {
+export default function Patient_Dashboard() {
   const { data: session } = useSession();
 
   return (
@@ -84,4 +84,5 @@ function Patient_Dashboard() {
   )
 }
 
-export default withAuth(Patient_Dashboard);
+// const ProtectedPatientDashboard = withAuth(Patient_Dashboard, ['patient']);
+// export default ProtectedPatientDashboard;

@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
-//import Providers from 'next-auth/providers';
 import { connectToDB } from '../../../../utils/database';
 import Patient from '../../../../models/patient';
+import Admin from '../../../../models/admin';
 import bcrypt from 'bcryptjs';
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -10,20 +10,48 @@ const handler = NextAuth({
     CredentialsProvider({
       name: 'credentials',
 
-      async authorize(credentials) {
-        const {email, password} = credentials;
+      async authorize(credentials, req) {
+        const {email, password, isAdmin} = credentials;
 
         try {
           await connectToDB();
 
-          const user = await Patient.findOne({ email });
+          let user;
 
-          if(user){
-            console.log("Patient found");
+          if (isAdmin == true) {
+            user = await Admin.findOne({ username: email });
+
+            if (user && bcrypt.compare(password, user.password)) {
+              return {
+                id: user._id.toString(),
+                username: user.username,
+                role: 'admin'
+              };
+            } 
+            else {
+              throw new Error('Invalid admin credentials');
+            }
+          } 
+
+          else {
+            user = await Patient.findOne({ email });
+
+            if (user && bcrypt.compare(password, user.personal_details.password)) {
+              return {
+                id: user._id.toString(),
+                email: user.personal_details.email,
+                name: user.personal_details.name,
+                gender: user.personal_details.gender,
+                phone: user.personal_details.phone,
+                role: 'patient'
+              };
+            } 
+            else {
+              throw new Error('Invalid patient credentials');
+            }
           }
-          else{
-            console.log("Patient not found");
-          }
+          /*
+          const user = await Patient.findOne({ email });
 
           if (user && bcrypt.compare(password, user.personal_details.password)) {
             return {
@@ -33,13 +61,12 @@ const handler = NextAuth({
               gender: user.personal_details.gender,
               phone: user.personal_details.phone
             }
-
-            //return user;
           }
           else {
             console.log("Invalid email or password");
             throw new Error('Invalid email or password');
           }
+          */
         } 
         catch (error) {
           console.log("Error: ", error);
@@ -49,29 +76,44 @@ const handler = NextAuth({
   ],
   session: {
     jwt: true
-    // strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
-        token.gender = user.gender;
-        token.phone = user.phone;
+        token.role = user.role;
+
+        if (user.role === 'admin'){
+          token.username = user.username;
+        }
+
+        if (user.role === 'patient') {
+          token.email = user.email;
+          token.name = user.name;
+          token.gender = user.gender;
+          token.phone = user.phone;
+        }
       }
+
       return token;
     },
     async session({ session, token }) {
       if (token) {
-        session.user = {
+         session.user = {
           id: token.id,
-          email: token.email,
-          name: token.name,
-          gender: token.gender,
-          phone: token.phone
-        };
+          role: token.role,
+        }
+        if (token.role === 'admin') {
+          session.user.username = token.username;
+        }
+
+        if (token.role === 'patient') {
+          session.user.email = token.email;
+          session.user.name = token.name;
+          session.user.gender = token.gender;
+          session.user.phone = token.phone;
+        }
       }
       
       return session;

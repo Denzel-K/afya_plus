@@ -36,7 +36,8 @@ export default function RegForm() {
       const result = await signIn("credentials", {
         redirect: false,
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        isAdmin: false
       });
 
       if (result.ok) {

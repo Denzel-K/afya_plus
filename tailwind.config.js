@@ -20,6 +20,7 @@ module.exports = {
         'eerie-black': '#181717',
         'blue': '#69B3E4',
         'admin-blue': '#4047D1',
+        'status-clr': '#9180AD',
         'Pending-clr': '#E9A316',
         'Approved-clr': '#57E33E',
         'Cancelled-clr': '#E91F36'

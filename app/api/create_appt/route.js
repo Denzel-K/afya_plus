@@ -7,13 +7,13 @@ export const POST = async (req, res) => {
   console.log("Starting appointment creation:");
   await connectToDB();
 
-  const { userId, doctor, apptDate, reason } = await req.json();
+  const { userId, creatorName, doctor, apptDate, reason } = await req.json();
   const createdAt = Date.now();
   const apptStatus = "Pending";
 
   try {
     // Assuming creator is the ID of the logged-in patient
-    const newAppointment = await Appointment.create({ creator: userId, doctor, apptDate, reason, createdAt, apptStatus });
+    const newAppointment = await Appointment.create({ creator: userId, doctor, createdBy:creatorName, apptDate, reason, createdAt, apptStatus });
 
     return new Response(JSON.stringify(newAppointment), {status: 200})
   } 

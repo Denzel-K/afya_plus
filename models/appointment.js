@@ -6,6 +6,10 @@ const apptSchema = new Schema({
     ref: 'Patient',
     required: true
   },
+  createdBy: {
+    type: String,
+    required: [true, "Creator required"]
+  },
   doctor: {
     type: String,
     required: [true, "Doctor required"]
