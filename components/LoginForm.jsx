@@ -21,7 +21,8 @@ export default function LoginForm() {
 
     if (result.error) {
       console.log(result.error);
-    } else {
+    } 
+    else {
       router.push('/patient_dashboard');
     }
   }

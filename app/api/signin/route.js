@@ -1,7 +1,32 @@
 import { connectToDB } from '../../../utils/database';
 import Patient from '../../../models/patient';
-// import jwt from 'jsonwebtoken';
-// import { setCookie } from 'nookies';
+
+// const handleErrors = (err) => {
+//   console.log (err.message, err.code);
+
+//   let errors = {
+//     personal_details: {
+//       email: '',
+//       password: '',
+//     }
+//   };
+
+//   if (err.code === 11000) {
+//     errors.personal_details.email = "Email address already in use!";
+//     return errors;
+//   }
+
+//   if (err.message.includes('Patient validation failed')) {
+//     Object.values(err.errors).forEach(({ properties }) => {
+//       const pathParts = properties.path.split('.');
+//       if (pathParts.length > 1) {
+//         errors[pathParts[0]][pathParts[1]] = properties.message;
+//       }
+//     });
+//   }
+
+//   return errors;
+// } 
 
 export const POST = async (req, res) => {
   await connectToDB();
@@ -10,22 +35,7 @@ export const POST = async (req, res) => {
 
   try {
     const patient = await Patient.login(email, password);
-/*
-    // Create JWT token
-    const token = jwt.sign(
-      { id: patient._id, email: patient.personal_details.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
 
-    // Set HTTP-only cookie with the token
-    setCookie({ res }, 'token', token, {
-      maxAge: 3600, // 1 hour expiration
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Secure in production environment
-      sameSite: 'strict' // Adjust as needed
-    });
-*/
     return new Response(JSON.stringify({ patient }), {
       status: 200
     });

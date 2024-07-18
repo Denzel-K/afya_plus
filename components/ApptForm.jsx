@@ -16,6 +16,11 @@ export default function ApptForm() {
   });
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [errorMessages, setErrorMessages] = useState({
+    doctor_err: '',
+    apptDate_err: '',
+    reason_err: ''
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,11 +45,6 @@ export default function ApptForm() {
       apptDate: formData.apptDate,
       reason: formData.reason,
     };
-  
-    //setApptData(newApptData);
-
-    console.log(formData);
-    console.log(newApptData);
 
     const res = await fetch('/api/create_appt', {
       method: 'POST',
@@ -56,6 +56,15 @@ export default function ApptForm() {
       router.push('/patient_dashboard');
     }
     else{
+      const errors = await res.json();
+      console.log(errors);
+      
+      setErrorMessages({
+        doctor_err: errors.doctor,
+        apptDate_err: errors.apptDate,
+        reason_err: errors.reason
+      });
+
       console.log("Error creating new appointment");
     }
   };
@@ -64,6 +73,7 @@ export default function ApptForm() {
     <form className="appt_form" onSubmit={handleSubmit}>
       <label htmlFor="doctor">DOCTOR</label>
       <br />
+
       <div className="f_input flex align-middle justify-between" onClick={handleDropdownToggle}>
         <span className="opacity-70">{formData.doctor || "Select a doctor"}</span>
         <span className={`transition-transform ${dropdownVisible ? 'rotate-180' : 'rotate-0'}`}>
@@ -76,6 +86,12 @@ export default function ApptForm() {
           />
         </span>
       </div>
+
+      {errorMessages.doctor_err !== '' && (
+        <>
+          <div className="err">{errorMessages.doctor_err}</div>
+        </>
+      )}
 
       {dropdownVisible && (
         <div className="options bg-input-bg rounded-md mt-2">
@@ -93,22 +109,36 @@ export default function ApptForm() {
       )}
       <br />
 
-      <label htmlFor="apptDate">DATE</label>
-      <br />
-      <input 
-        className="f_input"
-        type="datetime-local" 
-        name="apptDate" 
-        id="apptDate" 
-        value={formData.apptDate}
-        onChange={handleChange}
-      />
-      <br /><br />
+      <div className="field">
+        <label htmlFor="apptDate">DATE</label>
+        <br />
+        <input 
+          className="f_input"
+          type="datetime-local" 
+          name="apptDate" 
+          id="apptDate" 
+          value={formData.apptDate}
+          onChange={handleChange}
+        />
 
-      <label htmlFor="reason">APPOINTMENT REASON</label>
-      <br />
-      <textarea className="f_input" name="reason" id="reason" placeholder="e.g. Annual/monthly/weekly checkup..." value={formData.reason} onChange={handleChange}></textarea>        
-      <br /><br />
+        {errorMessages.apptDate_err !== '' && (
+          <>
+            <div className="err">{errorMessages.apptDate_err}</div>
+          </>
+        )}
+      </div>
+
+      <div className="field">
+        <label htmlFor="reason">APPOINTMENT REASON</label>
+        <br />
+        <textarea className="f_input" name="reason" id="reason" placeholder="e.g. Annual/monthly/weekly checkup..." value={formData.reason} onChange={handleChange}></textarea> 
+
+        {errorMessages.reason_err !== '' && (
+          <>
+            <div className="err">{errorMessages.reason_err}</div>
+          </>
+        )}  
+      </div>       
 
       <div className="flex justify-center align-middle mt-4">
         <button type="submit" className="btn btn_submit">

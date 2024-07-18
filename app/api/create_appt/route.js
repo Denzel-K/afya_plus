@@ -1,7 +1,24 @@
-// app/api/create_appt/index.js
-
 import { connectToDB } from '../../../utils/database';
 import Appointment from '../../../models/appointment';
+
+const handleErrors = (err) => {
+  console.log (err.message, err.code);
+
+  let errors = {
+    doctor: '',
+    apptDate: '',
+    reason: ''
+  };
+
+  if (err.message.includes('Appointment validation failed')) {
+    Object.values(err.errors).forEach( ({properties}) => {
+      
+      errors [properties.path] = properties.message;
+    })
+  }
+
+  return errors;
+} 
 
 export const POST = async (req, res) => {
   console.log("Starting appointment creation:");
@@ -17,9 +34,11 @@ export const POST = async (req, res) => {
 
     return new Response(JSON.stringify(newAppointment), {status: 200})
   } 
-  catch (error) {
-    console.error("Failed to create new appointment:", error);
-    return new Response("Failed to create new appointment", {
+  catch (err) {
+    const errors = handleErrors(err);
+
+    console.error("Failed to create new appointment:", err);
+    return new Response(JSON.stringify(errors), {
       status: 500,
     });
   }

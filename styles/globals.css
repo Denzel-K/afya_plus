@@ -164,6 +164,17 @@ textarea{
 .opt:nth-child(10){
   border-bottom: none;
 }
+.field{
+  margin-bottom: 1rem;
+}
+.no_margin{
+  margin-bottom: 0;
+}
+.err {
+  color: rgb(202, 25, 61);
+  width: 100%;
+  text-align: right;
+}
 
 .intro_head {
   font-size: 3.5rem;

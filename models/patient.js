@@ -20,7 +20,7 @@ const patientSchema = new Schema({
     },
     email: {
       type: String,
-      required:[true, "Enter your name"],
+      required:[true, "Enter your email address"],
       validate: {
         validator: function (v) {
           return validator.isEmail(v);

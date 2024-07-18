@@ -70,6 +70,7 @@ const handler = NextAuth({
         } 
         catch (error) {
           console.log("Error: ", error);
+          return new Response(JSON.stringify(error));
         }  
       }
     })

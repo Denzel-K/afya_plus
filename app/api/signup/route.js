@@ -1,6 +1,41 @@
 import {connectToDB} from '../../../utils/database';
 import Patient from '../../../models/patient';
 
+const handleErrors = (err) => {
+  console.log (err.message, err.code);
+
+  let errors = {
+    personal_details: {
+      name: '',
+      birthDate: '',
+      email: '',
+      gender: '',
+      phone: '',
+      password: '',
+    },
+    medical_information: {
+      insurance_provider: '',
+      insurance_number: ''
+    }
+  };
+
+  if (err.code === 11000) {
+    errors.personal_details.email = "Email address already in use!";
+    return errors;
+  }
+
+  if (err.message.includes('Patient validation failed')) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      const pathParts = properties.path.split('.');
+      if (pathParts.length > 1) {
+        errors[pathParts[0]][pathParts[1]] = properties.message;
+      }
+    });
+  }
+
+  return errors;
+} 
+
 export const POST = async(req, res) => {
   console.log("Starting patient creation:")
   await connectToDB();
@@ -31,28 +66,13 @@ export const POST = async(req, res) => {
     return new Response(JSON.stringify(newPatient), {
       status: 200
     });
-  } catch (error) {
-    console.log(error)
-    return new Response("Failed to register patient", {
+  } 
+  catch (err) {
+    const errors = handleErrors(err);
+    console.log(err);
+    
+    return new Response(JSON.stringify(errors), {
       status: 500
     })
   }
 }
-
-
-/*
-    // Create JWT token
-    const token = jwt.sign(
-      { id: newPatient._id, email: newPatient.personal_details.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    // Set HTTP-only cookie with the token
-    setCookie({ res }, 'token', token, {
-      maxAge: 3600, // 1 hour expiration
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Secure in production environment
-      sameSite: 'strict' // Adjust as needed
-    });
-*/
