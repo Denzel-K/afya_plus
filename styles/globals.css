@@ -9,7 +9,9 @@
   padding: 0;
   margin: 0;
 }
-
+.par{
+  color: #9289b3;
+}
 body {
   background-color: #0E0E0E;
   font-family: 'roboto';
@@ -65,9 +67,6 @@ body {
 .start_btn:hover{
   background-color: rgb(183, 177, 177);
   color: #000000;
-}
-.par{
-  color: #564b7f;
 }
 
 .btn_submit{
@@ -166,109 +165,92 @@ textarea{
   border-bottom: none;
 }
 
-@media(min-width: 325px){
-  .intro_head {
-    font-size: 3.5rem;
-  }
-  .dash_grid{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .main_box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .welcome, .appt_container, .profile_details{
-    border-radius: 10px;
-    background-color: #181717;
-  }
-  .welcome{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-around;
-    padding: 2rem 1.5rem;
-    width: 100%;
-    margin-bottom: 1.8rem;
-  }
-  .welcome h1 {
-    font-size: 2.6rem;
-    font-weight: 600;
-    color: rgb(128, 144, 152);
-  }
-  .welcome p {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: rgb(176, 180, 182);
-    opacity: .7;
-  }
-  .welcome > div:nth-child(1){
-    width: 40%;
-  }
-  .welcome > div:nth-child(2){
-    margin-left: 1.5rem
-  }
-  .profile_details{
-    display: none;
-  }
-
-  .appt_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 2rem 1rem;
-    width: 100%;
-    /* margin-top: 1.8rem; */
-  }
-  .appt_head{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .appt_head> span:nth-child(1){
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: rgb(128, 144, 152);
-    opacity: .8;
-  }
-  .new_appt_btn{
-    color: #5771f6;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s ease;
-    background: transparent;
-    border: 1.8px solid #4f69e9;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .5rem;
-    width: 120px;
-  }
-  .new_appt_btn:hover{
-    background-color: #a1a7ad;
-    color: #01051a;
-  }
-  .empty_appt {
-    height: 200px;
-    width: 100%;
-    background-color: #0E0E0E;
-    border-radius: 10px;
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
+.intro_head {
+  font-size: 3.5rem;
 }
-@media(min-width: 425px){
+.dash_grid{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+}
+.main_box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.welcome, .appt_container, .profile_details{
+  border-radius: 10px;
+  background-color: #181717;
+}
+.welcome{
+  display: none;
+}
+
+.profile_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 1rem;
+  height: fit-content;
+}
+
+.appt_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.appt_head{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.appt_head> span:nth-child(1){
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(128, 144, 152);
+  opacity: .8;
+}
+.new_appt_btn{
+  color: #5771f6;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  background: transparent;
+  border: 1.8px solid #4f69e9;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem;
+  width: 120px;
+}
+.new_appt_btn:hover{
+  background-color: #a1a7ad;
+  color: #01051a;
+}
+.empty_appt {
+  height: 200px;
+  width: 100%;
+  background-color: #0E0E0E;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media(min-width: 430px){
   .intro_head {
     font-size: 3rem;
   }
@@ -289,7 +271,7 @@ textarea{
     padding: 2rem 1.5rem;
   }
 }
-@media(min-width: 768px){
+@media(min-width: 780px){
   .intro_card{
     width: 50%;
     margin: 0 auto;
@@ -310,6 +292,20 @@ textarea{
     padding: 2rem 1.5rem;
     width: 100%;
   }
+  .welcome h1 {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: rgb(128, 144, 152);
+  }
+  .welcome p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgb(176, 180, 182);
+    opacity: .7;
+  }
+  .welcome > div:nth-child(2){
+    margin-left: 1.5rem
+  }
   .welcome > div:nth-child(1){
     width: auto;
   }
@@ -322,8 +318,23 @@ textarea{
     padding: 1rem;
     height: 100%;
   }
+  .appt_container{
+    overflow-y: auto;
+  }
+  .p_appt_cont{
+    height: 400px;
+  }
+  .a_appt_cont{
+    height: 600px;
+  }
+  .appt_container::-webkit-scrollbar{
+    width: .3rem;
+  }
+  .appt_container::-webkit-scrollbar-thumb{
+    background: rgb(61, 58, 58);
+  }
 }
-@media(min-width: 1024px){
+@media(min-width: 1040px){
   .form_box{
     width: 75%;
   }

@@ -53,10 +53,10 @@ export default function MyAppointments() {
     <div className="my_appointments mt-4 w-full">
       {appointments.map((appt) => (
         <div key={appt.id} className="bg-appt-bg p-2 mt-4 rounded-md w-full">
-          <div className="flex justify-start align-middle">
-            <span className="text-primary-azure font-semibold sm:text-lg opacity-50">{session.user.name}'s</span>
-            <span className="text-primary-azure text-sm opacity-40 ml-2 sm:ml-4 mt-2">appointment with</span>
-            <span className="text-primary-azure font-semibold sm:text-lg opacity-50 ml-2 sm:ml-4">{appt.doctor}</span>
+          <div className="flex align-middle">
+            {/* <span className="text-primary-azure font-semibold sm:text-lg opacity-50">{session.user.name}'s</span>
+            <span className="text-primary-azure text-sm opacity-40 ml-2 sm:ml-4 mt-2">appointment with</span> */}
+            <span className="text-primary-azure font-semibold sm:text-lg opacity-50">{appt.doctor}</span>
           </div>
 
           <div className="mt-4 text-primary-azure opacity-50 text-sm">{appt.reason}</div>

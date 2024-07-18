@@ -93,9 +93,9 @@ export default function AllAppts() {
             <span className="text-primary-azure font-semibold sm:text-lg opacity-50 ml-2 sm:ml-4">{appt.doctor}</span>
           </div>
 
-          <div className="flex justify-start align-middle mt-4">
+          <div className="flex justify-start align-middle flex-col sm:flex-row mt-4">
             <div className="text-xs font-semibold text-blue opacity-50">Appt Date: <span>{new Date(appt.apptDate).toLocaleString()}</span></div>
-            <div className="text-xs font-semibold text-blue opacity-50 ml-4">Created at: <span>{new Date(appt.createdAt).toLocaleString()}</span></div>
+            <div className="text-xs font-semibold text-blue opacity-50 mt-2 sm:ml-4 sm:mt-0">Created at: <span>{new Date(appt.createdAt).toLocaleString()}</span></div>
           </div>
 
           <div className="mt-4 text-primary-azure opacity-55 text-sm">{appt.reason}</div>

@@ -33,7 +33,7 @@ export default function Patient_Dashboard() {
             </div>
           </div>
 
-          <div className="appt_container">
+          <div className="appt_container mt-4 p_appt_cont">
             <div className="appt_head">
               <span>My Appointments</span>
               <span>
