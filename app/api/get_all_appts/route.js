@@ -12,6 +12,7 @@ export const GET = async () => {
 
     if (!appointments) {
       console.log("Appointments not found");
+
       return new Response("Appointments not found", {
         status: 404,
       });

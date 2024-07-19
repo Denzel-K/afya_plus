@@ -18,7 +18,7 @@ const handler = NextAuth({
 
           let user;
 
-          if (isAdmin == true) {
+          if (isAdmin) {
             user = await Admin.findOne({ username: email });
 
             if (user && bcrypt.compare(password, user.password)) {
@@ -29,7 +29,7 @@ const handler = NextAuth({
               };
             } 
             else {
-              throw new Error('Invalid admin credentials');
+              return null;
             }
           } 
 
@@ -47,30 +47,13 @@ const handler = NextAuth({
               };
             } 
             else {
-              throw new Error('Invalid patient credentials');
+              return null;
             }
           }
-          /*
-          const user = await Patient.findOne({ email });
-
-          if (user && bcrypt.compare(password, user.personal_details.password)) {
-            return {
-              id: user._id.toString(),
-              email: user.personal_details.email,
-              name: user.personal_details.name,
-              gender: user.personal_details.gender,
-              phone: user.personal_details.phone
-            }
-          }
-          else {
-            console.log("Invalid email or password");
-            throw new Error('Invalid email or password');
-          }
-          */
-        } 
+        }
         catch (error) {
           console.log("Error: ", error);
-          return new Response(JSON.stringify(error));
+          return null;
         }  
       }
     })

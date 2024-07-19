@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const router = useRouter();
 
   const handleSubmit = async (event) => {
@@ -15,14 +16,15 @@ export default function LoginForm() {
     const result = await signIn('credentials', {
       redirect: false,
       email,
-      password,
-      isAdmin: false
+      password
     });
 
-    if (result.error) {
-      console.log(result.error);
+    if (result?.error || !result.ok) {
+      setError('Invalid credentials. Please try again.');
+      console.error(result.error);
     } 
     else {
+      setError('');
       router.push('/patient_dashboard');
     }
   }
@@ -53,6 +55,10 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />  
+
+      <div className="mt-2 text-center">
+        {error && <span className="text-Cancelled-clr">{error}</span>}
+      </div>
 
       <div className="flex justify-center align-middle mt-4">
         <button type="submit" className="btn btn_submit">

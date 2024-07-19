@@ -1,23 +1,47 @@
-"use client"
+"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
-//import { useEffect, useState } from 'react';
-import withAuth from '../../utils/withAuth';
+
 import { useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { signOut } from 'next-auth/react';
 
 import MyAppointments from '../../components/MyAppointments';
 
-export default function Patient_Dashboard() {
-  const { data: session } = useSession();
+
+function Patient_Dashboard() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/admin_login');
+    } 
+    else if (status === 'authenticated' && session?.user?.role !== 'patient') {
+      router.push('/unauthorized');
+    }
+  }, [status, router, session]);
+
+  if (status === 'loading') {
+    return (
+      <div className="loading text-primary-azure text-center text-2xl">Loading...</div>
+    );
+  }
 
   return (
     <section className="p_dashboard md:px-8">
       <div className="page_type">
-        DASHBOARD
+        <span className="page_head">DASHBOARD</span>
+        <span>
+          <button className="logout" onClick={() => signOut({ callbackUrl: '/' })}>
+            Log Out
+          </button>
+        </span>
       </div>
       <div className="dash_grid">
-        <div className="main_box">
+        <div className="main_box w-full">
           <div className="welcome">
             <div>
               <Image 
@@ -84,5 +108,4 @@ export default function Patient_Dashboard() {
   )
 }
 
-// const ProtectedPatientDashboard = withAuth(Patient_Dashboard, ['patient']);
-// export default ProtectedPatientDashboard;
+export default Patient_Dashboard;

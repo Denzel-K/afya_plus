@@ -33,7 +33,7 @@ const patientSchema = new Schema({
       required:[true, "Enter your phone number"],
       validate: {
         validator: function (v) {
-          return /^\+?[1-9]\d{1,14}$/.test(v); // E.164 format
+          return /^\+\d{1,3} \d{3} \d{3} \d{3}$/.test(v);
         },
         message: props => `${props.value} is not a valid phone number!`
       }

@@ -40,7 +40,7 @@ export default function ApptForm() {
 
     const newApptData = {
       userId: session?.user.id,
-      creatorName: session?.user.id,
+      creatorName: session?.user.name,
       doctor: formData.doctor,
       apptDate: formData.apptDate,
       reason: formData.reason,

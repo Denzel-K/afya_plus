@@ -1,0 +1,47 @@
+db.appointments.insertMany([
+  {
+    "creator": ObjectId("669ab755cb2932160ade366b"),
+    "createdBy": "John Doe",
+    "doctor": "Dr. Irene Zuma | Cardiology",
+    "reason": "I've been experiencing chest pain and shortness of breath lately. My doctor recommended I see a cardiologist to rule out any serious heart issues. I hope to get a thorough examination and discuss possible treatment options.",
+    "apptDate": ISODate("2024-08-15T10:00:00Z"),
+    "createdAt": ISODate("2024-07-19T10:00:00Z"),
+    "apptStatus": "Pending"
+  },
+  {
+    "creator": ObjectId("669ab755cb2932160ade366c"),
+    "createdBy": "Jane Smith",
+    "doctor": "Dr. Dana Fox | Pediatrics",
+    "reason": "My child has been suffering from a persistent cough and high fever for the past few days. I'm worried it might be something serious and would like a pediatrician to provide a proper diagnosis and treatment plan.",
+    "apptDate": ISODate("2024-08-16T14:00:00Z"),
+    "createdAt": ISODate("2024-07-19T10:00:00Z"),
+    "apptStatus": "Pending"
+  },
+  {
+    "creator": ObjectId("669ab755cb2932160ade366d"),
+    "createdBy": "Akira Tanaka",
+    "doctor": "Dr. Mark Mandela | Neurology",
+    "reason": "I've been experiencing frequent migraines and occasional numbness in my arms. These symptoms have been affecting my daily life, and I hope to get a thorough evaluation from a neurologist to find out the underlying cause.",
+    "apptDate": ISODate("2024-08-17T09:00:00Z"),
+    "createdAt": ISODate("2024-07-19T10:00:00Z"),
+    "apptStatus": "Pending"
+  },
+  {
+    "creator": ObjectId("669ab755cb2932160ade366e"),
+    "createdBy": "Maria Garcia",
+    "doctor": "Dr. Amit Shah | Dermatology",
+    "reason": "I've developed a suspicious mole on my skin that has recently changed in size and color. Given the changes, I'm concerned about the possibility of skin cancer and need a dermatologist to assess it.",
+    "apptDate": ISODate("2024-08-18T11:00:00Z"),
+    "createdAt": ISODate("2024-07-19T10:00:00Z"),
+    "apptStatus": "Pending"
+  },
+  {
+    "creator": ObjectId("669ab755cb2932160ade366f"),
+    "createdBy": "Ahmed Khan",
+    "doctor": "Dr. Jimmy Chou | Gastroenterology",
+    "reason": "I've been having persistent abdominal pain and digestive issues that have been troubling me for weeks. I need to consult a gastroenterologist to understand what might be causing these problems and explore treatment options.",
+    "apptDate": ISODate("2024-08-19T13:00:00Z"),
+    "createdAt": ISODate("2024-07-19T10:00:00Z"),
+    "apptStatus": "Pending"
+  }
+])

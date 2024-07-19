@@ -11,6 +11,7 @@ export default function AdminLogin() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,13 +20,15 @@ export default function AdminLogin() {
       redirect: false,
       email: username,
       password: password,
-      isAdmin: true // Indicating this is an admin login
+      isAdmin: true
     });
 
-    if (result?.error) {
+    if (result?.error || !result.ok) {
+      setError('Invalid credentials. Please try again.');
       console.error(result.error);
-    } else {
-      // Redirect to the admin dashboard or handle successful login
+    } 
+    else {
+      setError('');
       router.push('/admin_dashboard');
     }
   }
@@ -82,6 +85,10 @@ export default function AdminLogin() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />  
+
+          <div className="mt-2 text-center">
+            {error && <span className="text-Cancelled-clr">{error}</span>}
+          </div>
 
           <div className="flex justify-center align-middle mt-4">
             <button type="submit" className="btn btn_submit">

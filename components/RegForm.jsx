@@ -49,8 +49,7 @@ export default function RegForm() {
       const result = await signIn("credentials", {
         redirect: false,
         email: formData.email,
-        password: formData.password,
-        isAdmin: false
+        password: formData.password
       });
 
       if (result.ok) {
@@ -69,7 +68,6 @@ export default function RegForm() {
         gender_err: errors.personal_details.gender,
         phone_err:errors.personal_details.phone,
         password_err: errors.personal_details.password,
-        password_confirm_err: passMatch,
         insurance_provider_err: errors.medical_information.insurance_provider,
         insurance_number_err: errors.medical_information.insurance_number
       })

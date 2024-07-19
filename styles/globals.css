@@ -10,7 +10,7 @@
   margin: 0;
 }
 .par{
-  color: #9289b3;
+  color: #c01fed;
 }
 body {
   background-color: #0E0E0E;
@@ -40,14 +40,39 @@ body {
   line-height: 3.5rem;
 }
 .page_type{
-  background-image: linear-gradient(to right, #cb4fc6, #aa6ad7, #8a7ddd, #708ada, #6494d0, #679fce, #72a8cb, #82b1c7, #95c0ce, #abcfd6, #c2dddf, #d9ebea);
+  padding-bottom: 1rem;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:1.6px solid rgb(121, 111, 111);
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: .2rem 1rem;
+  color: rgb(164, 193, 225);
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+.logout:hover{
+  cursor: pointer;
+  background-color: #7d86b4;
+  color: black;
+}
+
+.page_head {
+  background-image: linear-gradient(to right, #cb4fc6, #aa6ad7, #8a7ddd, #708ada, #6494d0, #679fce, #72a8cb, #82b1c7, #60b1cd, #abcfd6, #75b6e5, #c7adf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
   font-weight: 700;
   font-family: 'raleway';
   font-size: 1.5rem;
-  padding-bottom: 1rem;
 }
 .btn {
   padding: .5rem 2rem;
