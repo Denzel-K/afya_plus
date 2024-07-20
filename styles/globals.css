@@ -31,7 +31,7 @@ body {
   justify-content: center;
 }
 .intro_head{
-  background-image: linear-gradient(to right bottom, #cb4fc6, #aa6ad7, #8a7ddd, #708ada, #6494d0, #679fce, #72a8cb, #82b1c7, #95c0ce, #abcfd6, #c2dddf, #d9ebea);
+  background-image: linear-gradient(to right bottom, #e867b0, #d864ba, #c563c3, #ae64cb, #9365d1, #7871dd, #557ce5, #1885e9, #0098ee, #00aaed, #00b9e8, #26c7e1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
@@ -66,7 +66,7 @@ body {
 }
 
 .page_head {
-  background-image: linear-gradient(to right, #cb4fc6, #aa6ad7, #8a7ddd, #708ada, #6494d0, #679fce, #72a8cb, #82b1c7, #60b1cd, #abcfd6, #75b6e5, #c7adf8);
+  background-image: linear-gradient(to right bottom, #e867b0, #d864ba, #c563c3, #ae64cb, #9365d1, #7871dd, #557ce5, #1885e9, #0098ee, #00aaed, #00b9e8, #26c7e1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
@@ -217,7 +217,7 @@ textarea{
   justify-content: center;
 }
 .welcome, .appt_container, .profile_details{
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #181717;
 }
 .welcome{
@@ -286,6 +286,10 @@ textarea{
   justify-content: center;
 }
 
+.profile_bg{
+  display: none;
+}
+
 @media(min-width: 430px){
   .intro_head {
     font-size: 3rem;
@@ -318,7 +322,7 @@ textarea{
   .dash_grid{
     display: grid;
     grid-template-columns: 1fr 30%;
-    gap: 1.8rem;
+    gap: 1rem;
   }
   .welcome{
     display: flex;
@@ -354,19 +358,26 @@ textarea{
     padding: 1rem;
     height: 100%;
   }
-  .appt_container{
+  .profile_bg {
+    display: block;
+    height: 300px;
+    width: 100%;
+    position: relative;
+    margin-top: 2.5rem;
+  }
+  .scrollable{
     overflow-y: auto;
   }
   .p_appt_cont{
-    height: 400px;
+    height: 300px;
   }
   .a_appt_cont{
-    height: 600px;
+    height: 550px;
   }
-  .appt_container::-webkit-scrollbar{
+  .scrollable::-webkit-scrollbar{
     width: .3rem;
   }
-  .appt_container::-webkit-scrollbar-thumb{
+  .scrollable::-webkit-scrollbar-thumb{
     background: rgb(61, 58, 58);
   }
 }

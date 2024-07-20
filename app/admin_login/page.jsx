@@ -58,7 +58,9 @@ export default function AdminLogin() {
           />
         </div>
         <h3 className="text-primary-azure text-4xl opacity-75 text-center">Admin</h3>
-        <br /><br />
+        <br />
+        <p className="text-primary-azure text-center text-xs opacity-70">Use 'admin' and 'test1234' as username and password respectively</p>
+        <br />
 
         <form className="login_form" onSubmit={handleSubmit}>
           <label htmlFor="username">USERNAME</label>

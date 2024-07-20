@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Nav() {
   return (
-    <nav className="w-full px-8 py-4 flex align-middle justify-start">
+    <nav className="w-full px-4 py-4 md:px-12 flex align-middle justify-start">
       <div className="flex justify-center">
         <Image
           src="assets/afyaplus_logo.svg"

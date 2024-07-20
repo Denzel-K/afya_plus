@@ -40,7 +40,7 @@ function AdminDashboard() {
       </div>
       <div className="dash_grid w-full">
         <div className="main_box mt-4 md:mt-0 w-full">
-          <div className="appt_container a_appt_cont">
+          <div className="appt_container">
             <div className="appt_head">
               <span>Appointments</span>
             </div>

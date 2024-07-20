@@ -12,7 +12,7 @@ export default function Unauthorized() {
           alt="prohibited"
         />
       </div>
-      <div className="text-primary-azure text-lg mt-4 opacity-70">
+      <div className="text-primary-azure text-lg mt-4 opacity-70 text-center">
         You are not authorized to access this page
       </div>
       <div className="text-primary-azure text-lg mt-6 opacity-60 font-semibold">Go to:</div>

@@ -17,7 +17,7 @@ function Patient_Dashboard() {
 
   useEffect(() => {
     if (status === 'unauthenticated') {
-      router.push('/admin_login');
+      router.push('/login');
     } 
     else if (status === 'authenticated' && session?.user?.role !== 'patient') {
       router.push('/unauthorized');
@@ -57,7 +57,7 @@ function Patient_Dashboard() {
             </div>
           </div>
 
-          <div className="appt_container mt-4 p_appt_cont">
+          <div className="appt_container mt-4">
             <div className="appt_head">
               <span>My Appointments</span>
               <span>
@@ -101,6 +101,15 @@ function Patient_Dashboard() {
               <span className="opacity-70">Contact:</span>
               <span className="opacity-50 ml-2">{session?.user?.phone}</span>
             </div>
+          </div>
+          <div className="profile_bg rounded-md">
+            <Image 
+              src="/assets/bg.jpg"
+              width={600}
+              height={600}
+              alt="bg"
+              className="w-full h-full rounded-md"
+            />
           </div>
         </div>
       </div>

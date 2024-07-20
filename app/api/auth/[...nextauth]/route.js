@@ -34,7 +34,8 @@ const handler = NextAuth({
           } 
 
           else {
-            user = await Patient.findOne({ email });
+            user = await Patient.findOne({ 'personal_details.email': email });
+            console.log(email, user);
 
             if (user && bcrypt.compare(password, user.personal_details.password)) {
               return {

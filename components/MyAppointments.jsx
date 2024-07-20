@@ -50,7 +50,7 @@ export default function MyAppointments() {
   }
 
   return (
-    <div className="my_appointments mt-4 w-full">
+    <div className="my_appointments mt-4 w-full p_appt_cont scrollable">
       {appointments.map((appt) => (
         <div key={appt.id} className="bg-appt-bg p-2 mt-4 rounded-md w-full">
           <div className="flex align-middle">
