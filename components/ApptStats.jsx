@@ -24,8 +24,8 @@ export default function ApptStats() {
     //Initial fetch
     fetchStats();
 
-    // Set up interval to refetch stats every 30 seconds
-    const intervalId = setInterval(fetchStats, 30000);
+    // Set up interval to refetch stats every 5 seconds
+    const intervalId = setInterval(fetchStats, 3000);
 
     // Clean up interval on component unmount
     return () => clearInterval(intervalId);

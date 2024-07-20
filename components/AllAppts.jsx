@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 export default function AllAppts() {
   const [appointments, setAppointments] = useState({});
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   async function fetchAllAppts(){
     try {
