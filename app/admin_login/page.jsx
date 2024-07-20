@@ -25,7 +25,8 @@ export default function AdminLogin() {
 
     if (result?.error || !result.ok) {
       setError('Invalid credentials. Please try again.');
-      console.error(result.error);
+      console.log("Error logging in:");
+      console.log(result.error);
     } 
     else {
       setError('');
