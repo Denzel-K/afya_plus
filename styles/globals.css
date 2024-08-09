@@ -37,8 +37,8 @@ body {
   text-align: center;
   font-weight: 900;
   font-family: 'raleway';
-  line-height: 2rem;
-  font-size: 3.5rem;
+  line-height: 3.5rem;
+  font-size: 2rem;
 }
 .page_type{
   padding-bottom: 1rem;
@@ -290,11 +290,6 @@ textarea{
   display: none;
 }
 
-@media(min-width: 430px){
-  .intro_head {
-    font-size: 2rem;
-  }
-}
 @media(min-width: 600px){
   .intro_card{
     width: 70%;
