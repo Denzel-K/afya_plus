@@ -37,8 +37,8 @@ body {
   text-align: center;
   font-weight: 900;
   font-family: 'raleway';
-  line-height: 3.5rem;
   font-size: 2rem;
+  line-height: 2.5rem;
 }
 .page_type{
   padding-bottom: 1rem;
@@ -54,8 +54,8 @@ body {
   justify-content: center;
   border:1.6px solid rgb(121, 111, 111);
   border-radius: 8px;
-  font-size: 1rem;
-  padding: .2rem 1rem;
+  font-size: 12px;
+  padding: .2rem .8rem;
   color: rgb(164, 193, 225);
   font-weight: 600;
   transition: 0.3s ease;
@@ -73,7 +73,7 @@ body {
   text-align: left;
   font-weight: 700;
   font-family: 'raleway';
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 .btn {
   padding: .5rem 2rem;
@@ -307,6 +307,9 @@ textarea{
   }
   .appt_head> span:nth-child(1){
     font-size: 1.6rem;
+  }
+  .page_head{
+    font-size: 1.5rem;
   }
 }
 @media(min-width: 785px){

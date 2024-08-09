@@ -2,7 +2,6 @@
 
 import {useState, useEffect} from "react";
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
 
 export default function AllAppts() {
   const [appointments, setAppointments] = useState({});
@@ -86,10 +85,10 @@ export default function AllAppts() {
     <div className="all_appointments mt-4 w-full a_appt_cont scrollable">
       {appointments.map((appt) => (
         <div key={appt.id} className="bg-appt-bg pt-4 px-2 mt-4 rounded-md w-full">
-          <div className="flex justify-start align-middle">
-            <span className="text-primary-azure font-semibold sm:text-lg opacity-50">{appt.createdBy}'s</span>
-            <span className="text-primary-azure text-sm opacity-40 ml-2 sm:ml-4 mt-2">appointment with</span>
-            <span className="text-primary-azure font-semibold sm:text-lg opacity-50 ml-2 sm:ml-4">{appt.doctor}</span>
+          <div className="flex justify-start align-middle flex-row">
+            <span className="text-primary-azure text-sm font-semibold sm:text-lg opacity-50">{appt.createdBy}'s</span>
+            <span className="text-primary-azure text-xs sm:text-sm opacity-40 ml-2 sm:ml-4 mt-2">appointment with</span>
+            <span className="text-primary-azure text-sm font-semibold sm:text-lg opacity-50 ml-2 sm:ml-4">{appt.doctor}</span>
           </div>
 
           <div className="flex justify-start align-middle flex-col sm:flex-row mt-4">
@@ -97,7 +96,7 @@ export default function AllAppts() {
             <div className="text-xs font-semibold text-blue opacity-50 mt-2 sm:ml-4 sm:mt-0">Created at: <span>{new Date(appt.createdAt).toLocaleString()}</span></div>
           </div>
 
-          <div className="mt-4 text-primary-azure opacity-55 text-sm">{appt.reason}</div>
+          <div className="mt-4 text-primary-azure opacity-55 text-xs sm:text-sm">{appt.reason}</div>
 
           <div className="status flex align-middle justify-between py-2 mt-2 border-t-2 border-eerie-black">
             <div className="status flex align-middle justify-start py-2">
