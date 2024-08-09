@@ -65,8 +65,8 @@ function Patient_Dashboard() {
                   <span>CREATE</span>
                   <span>
                     <Image 
-                      width={22}
-                      height={22}
+                      width={18}
+                      height={18}
                       src="assets/calendar-add-appt.svg"
                       alt="add appt"
                     />

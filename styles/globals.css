@@ -37,7 +37,8 @@ body {
   text-align: center;
   font-weight: 900;
   font-family: 'raleway';
-  line-height: 3.5rem;
+  line-height: 2rem;
+  font-size: 3.5rem;
 }
 .page_type{
   padding-bottom: 1rem;
@@ -139,7 +140,8 @@ textarea{
 
 .gender_box{
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: flex-start;
   padding-top: .5rem;
 }
@@ -151,6 +153,7 @@ textarea{
   padding: .5rem 1rem;
   background-color: #0f0f0f;
   border-radius: 10px;
+  margin-top: 1rem;
   margin-right: 1.5rem;
 }
 .g_field input{
@@ -201,9 +204,7 @@ textarea{
   text-align: right;
 }
 
-.intro_head {
-  font-size: 3.5rem;
-}
+
 .dash_grid{
   display: flex;
   flex-direction: column-reverse;
@@ -251,24 +252,23 @@ textarea{
   justify-content: space-between;
 }
 .appt_head> span:nth-child(1){
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: rgb(128, 144, 152);
   opacity: .8;
 }
 .new_appt_btn{
   color: #5771f6;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   transition: 0.3s ease;
   background: transparent;
   border: 1.8px solid #4f69e9;
-  width: 200px;
+  width: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: .5rem;
-  width: 120px;
 }
 .new_appt_btn:hover{
   background-color: #a1a7ad;
@@ -292,7 +292,7 @@ textarea{
 
 @media(min-width: 430px){
   .intro_head {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 @media(min-width: 600px){
@@ -310,8 +310,11 @@ textarea{
   .appt_container{
     padding: 2rem 1.5rem;
   }
+  .appt_head> span:nth-child(1){
+    font-size: 1.6rem;
+  }
 }
-@media(min-width: 780px){
+@media(min-width: 785px){
   .intro_card{
     width: 50%;
     margin: 0 auto;
@@ -379,6 +382,16 @@ textarea{
   }
   .scrollable::-webkit-scrollbar-thumb{
     background: rgb(61, 58, 58);
+  }
+  .gender_box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: .5rem;
+  }
+  .g_field{
+    margin-top: 0;
   }
 }
 @media(min-width: 1040px){

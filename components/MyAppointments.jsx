@@ -61,24 +61,24 @@ export default function MyAppointments() {
 
           <div className="mt-4 text-primary-azure opacity-50 text-sm">{appt.reason}</div>
 
-          <div className="status flex align-middle justify-between py-4 border-t-2 border-eerie-black mt-4">
+          <div className="status py-4 border-t-2 border-eerie-black mt-4">
             <div className="flex justify-start align-middle flex-col sm:flex-row">
               <div className="text-xs font-semibold text-blue opacity-50">Appt Date: <span>{new Date(appt.apptDate).toLocaleString()}</span>,</div>
               <div className="text-xs font-semibold text-blue opacity-50 mt-2 sm:ml-2 sm:mt-0">Created at: <span>{new Date(appt.createdAt).toLocaleString()}</span></div>
             </div>
+          </div>
 
-            <div className="flex align-middle justify-center">
-              <span className="w-6 h-6 flex align-middle justify-center">
-                <Image 
-                  src={`/assets/${appt.apptStatus}.svg`}
-                  width={18}
-                  height={18}
-                  alt={appt.status}
-                  className="mr-2 opacity-70 mb-1"
-                />
-              </span>
-              <span className={`text-status-clr opacity-70 text-sm font-semibold`}>{appt.apptStatus}</span>
-            </div>
+          <div className="flex align-middle justify-end w-full">
+            <span className="w-6 h-6 flex align-middle justify-center">
+              <Image 
+                src={`/assets/${appt.apptStatus}.svg`}
+                width={18}
+                height={18}
+                alt={appt.status}
+                className="mr-2 opacity-70 mb-1"
+              />
+            </span>
+            <span className={`text-status-clr opacity-70 text-sm font-semibold`}>{appt.apptStatus}</span>
           </div>
         </div>
       ))}

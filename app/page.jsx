@@ -5,16 +5,15 @@ export default function Home() {
   return (
     <section className="intro_page">
       <div className="intro_card">
-        <h1 className="intro_head">
+        <h1 className="intro_head mt-8 sm:mt-12">
           Healthcare appointments made easy
         </h1>
-        <br />
-        <h2 className="text-xl text-center font-semibold text-primary-azure opacity-60">
+        
+        <h2 className="text-base sm:text-xl mt-10 text-center font-semibold text-primary-azure opacity-60">
           Book appointments with your healthcare providers effectively, at your own convenience.
         </h2>
-        <br />
-        <br />
-        <Link className="start_btn btn" href="/register">
+       
+        <Link className="start_btn btn mt-12" href="/register">
           Get Started
         </Link>
 
