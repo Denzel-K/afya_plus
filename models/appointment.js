@@ -28,7 +28,17 @@ const apptSchema = new Schema({
     required: [true, "Creation date required"]
   },
   apptStatus: {
-    type: String
+    type: String,
+    enum: ['Pending', 'Approved', 'Cancelled'],
+    default: 'Pending'
+  },
+  cancellationReason: {
+    type: String,
+    default: ''
+  },
+  statusUpdatedAt: {
+    type: Date,
+    default: Date.now
   }
 });
 

@@ -33,9 +33,9 @@ const patientSchema = new Schema({
       required:[true, "Enter your phone number"],
       validate: {
         validator: function (v) {
-          return /^\+\d{1,3} \d{3} \d{3} \d{3}$/.test(v);
+          return /^(\+254[17]\d{8}|0[17]\d{8})$/.test(v);
         },
-        message: props => `${props.value} is not a valid phone number!`
+        message: props => `${props.value} is not a valid phone number! Use format: +254712345678, +254112345678, 0712345678, or 0112345678`
       }
     },
     gender: {
@@ -73,7 +73,7 @@ patientSchema.pre('save', async function (next) {
   if (!this.isModified('personal_details.password')) {
     return next();
   }
-  
+
   try {
     const salt = await bcrypt.genSalt(10); // Generate salt
     this.personal_details.password = await bcrypt.hash(this.personal_details.password, salt); // Hash the password
@@ -92,7 +92,7 @@ patientSchema.pre('save', async function (next) {
 
 //   if (patient) {
 //     const auth = await bcrypt.compare (password, patient.personal_details.password);
-    
+
 //     if (auth) {
 //       return patient;
 //     }

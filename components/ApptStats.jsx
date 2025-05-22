@@ -32,58 +32,76 @@ export default function ApptStats() {
   }, []);
 
   return (
-    <div className="status_container w-full mt-4 flex flex-row align-middle justify-between sm:justify-around md:flex-col ">
-      <div className="status_type mt-4 px-2 py-2 bg-input-bg rounded-md w-20 sm:w-36 md:w-full">
-        <div className="stat_head md:w-full flex align-middle justify-between opacity-75">
-          <span className="text-Pending-clr text-base md:text-xl font-semibold hidden md:block">Pending</span>
-          <span>
-            <Image 
-            src="assets/Pending.svg"
-            width={28}
-            height={28}
-            alt="pending"
-            />
-          </span>
+    <div className="grid grid-cols-3 gap-2 sm:gap-4">
+      {/* Pending Card */}
+      <div className="bg-bg-dark rounded-lg overflow-hidden shadow-sm border border-border hover:shadow-md transition-all duration-300">
+        <div className="bg-Pending-clr bg-opacity-10 p-3 border-b border-Pending-clr border-opacity-20">
+          <div className="flex items-center justify-between">
+            <h3 className="text-Pending-clr font-medium text-sm md:text-base">Pending</h3>
+            <div className="w-8 h-8 rounded-full bg-Pending-clr bg-opacity-20 hidden sm:flex items-center justify-center">
+              <Image
+                src="/assets/Pending.svg"
+                width={18}
+                height={18}
+                alt="Pending"
+                className="opacity-80"
+              />
+            </div>
+          </div>
         </div>
-
-        <div className="stat_no opacity-80 flex align-middle justify-center w-full md:h-20 text-4xl md:text-6xl text-Pending-clr font-semibold">
-          {appointmentStats.Pending}
-        </div>
-      </div>
-
-      <div className="stat4s_type mt-4 px-2 py-2 bg-input-bg rounded-md w-20 sm:w-36 md:w-full">
-        <div className="stat_head w-full flex align-middle justify-between opacity-75">
-          <span className="text-Approved-clr text-base hidden md:block md:text-xl font-semibold">Approved</span>
-          <span>
-            <Image 
-            src="assets/Approved.svg"
-            width={24}
-            height={24}
-            alt="pending"
-            />
-          </span>
-        </div>
-
-        <div className="stat_no opacity-80 flex align-middle justify-center w-full md:h-20 text-4xl md:text-6xl text-Approved-clr font-semibold">
-          {appointmentStats.Approved}
+        <div className="p-4 text-center">
+          <div className="text-3xl md:text-4xl font-bold text-Pending-clr">
+            {appointmentStats.Pending}
+          </div>
+          <p className="text-xs text-text-secondary mt-1">Awaiting Review</p>
         </div>
       </div>
 
-      <div className="status_type mt-4 px-2 py-2 bg-input-bg rounded-md w-20 sm:w-36 md:w-full">
-        <div className="stat_head w-full flex align-middle justify-between opacity-75">
-          <span className="text-Cancelled-clr hidden md:block text-base md:text-xl font-semibold">Cancelled</span>
-          <span>
-            <Image 
-            src="assets/Cancelled.svg"
-            width={24}
-            height={24}
-            alt="pending"
-            />
-          </span>
+      {/* Approved Card */}
+      <div className="bg-bg-dark rounded-lg overflow-hidden shadow-sm border border-border hover:shadow-md transition-all duration-300">
+        <div className="bg-Approved-clr bg-opacity-10 p-3 border-b border-Approved-clr border-opacity-20">
+          <div className="flex items-center justify-between">
+            <h3 className="text-Approved-clr font-medium text-sm md:text-base">Approved</h3>
+            <div className="w-8 h-8 rounded-full bg-Approved-clr bg-opacity-20 hidden sm:flex items-center justify-center">
+              <Image
+                src="/assets/Approved.svg"
+                width={18}
+                height={18}
+                alt="Approved"
+                className="opacity-80"
+              />
+            </div>
+          </div>
         </div>
+        <div className="p-4 text-center">
+          <div className="text-3xl md:text-4xl font-bold text-Approved-clr">
+            {appointmentStats.Approved}
+          </div>
+          <p className="text-xs text-text-secondary mt-1">Confirmed Appointments</p>
+        </div>
+      </div>
 
-        <div className="stat_no opacity-80 flex align-middle justify-center w-full md:h-20 text-4xl md:text-6xl text-Cancelled-clr font-semibold">
-          {appointmentStats.Cancelled}
+      {/* Cancelled Card */}
+      <div className="bg-bg-dark rounded-lg overflow-hidden shadow-sm border border-border hover:shadow-md transition-all duration-300">
+        <div className="bg-Cancelled-clr bg-opacity-10 p-3 border-b border-Cancelled-clr border-opacity-20">
+          <div className="flex items-center justify-between">
+            <h3 className="text-Cancelled-clr font-medium text-sm md:text-base">Cancelled</h3>
+            <div className="w-8 h-8 rounded-full bg-Cancelled-clr bg-opacity-20 hidden sm:flex items-center justify-center">
+              <Image
+                src="/assets/Cancelled.svg"
+                width={18}
+                height={18}
+                alt="Cancelled"
+                className="opacity-80"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="p-4 text-center">
+          <div className="text-3xl md:text-4xl font-bold text-Cancelled-clr">
+            {appointmentStats.Cancelled}
+          </div>
+          <p className="text-xs text-text-secondary mt-1">Cancelled Appointments</p>
         </div>
       </div>
     </div>

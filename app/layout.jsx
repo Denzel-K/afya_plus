@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import Nav from '../components/Nav';
 import Provider from '../components/Provider'
 
 export const metadata = {
@@ -12,8 +11,7 @@ export default function RootLayout({ children }) {
     <html lang = 'en'>
       <body className="h-screen">
         <Provider>
-        <Nav />
-          <main className="p-4">
+          <main>
             {children}
           </main>
         </Provider>

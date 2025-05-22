@@ -23,7 +23,7 @@ export const GET = async (req, { params }) => {
     return new Response(JSON.stringify(appointment), {
       status: 200,
     });
-  } 
+  }
   catch (err) {
     console.error("Failed to fetch appointment:", err);
     return new Response("Failed to fetch appointment", {
@@ -35,12 +35,12 @@ export const GET = async (req, { params }) => {
 
 export const PATCH = async (req, { params }) => {
   console.log("Starting status update:")
-  const { newStatus} = await req.json();
+  const { newStatus, cancellationReason } = await req.json();
 
   try{
-    connectToDB();
+    await connectToDB();
 
-    const existingAppt= await Appointment.findById(params.id);
+    const existingAppt = await Appointment.findById(params.id);
 
     if(!existingAppt){
       console.log("Appointment not found!")
@@ -50,6 +50,12 @@ export const PATCH = async (req, { params }) => {
     }
 
     existingAppt.apptStatus = newStatus;
+    existingAppt.statusUpdatedAt = new Date();
+
+    // If cancellation reason is provided and status is Cancelled, update the reason
+    if (newStatus === 'Cancelled' && cancellationReason) {
+      existingAppt.cancellationReason = cancellationReason;
+    }
 
     await existingAppt.save();
 
@@ -58,7 +64,7 @@ export const PATCH = async (req, { params }) => {
     });
   }
   catch(err){
-    console.log("Failed to update appointment status");
+    console.log("Failed to update appointment status:", err);
     return new Response("Failed to update appointment status", {
       status: 500
     })
